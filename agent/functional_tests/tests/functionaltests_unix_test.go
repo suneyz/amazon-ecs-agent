@@ -1430,14 +1430,9 @@ func TestElasticInferenceValidator(t *testing.T) {
 
 // TestServerEndpointValidator tests the workflow of task server endpoint
 func TestServerEndpointValidator(t *testing.T) {
-	// The test runs only when the environment TEST_IAM_ROLE was set
-	if os.Getenv("TEST_DISABLE_TASK_IAM_ROLE_NET_HOST") == "true" {
-		t.Skip("Skipping test TaskIamRole in host network mode, as TEST_DISABLE_TASK_IAM_ROLE_NET_HOST is set true")
-	}
 	agentOptions := &AgentOptions{
 		ExtraEnvironment: map[string]string{
-			"ECS_ENABLE_TASK_IAM_ROLE":              "true",
-			"ECS_ENABLE_TASK_IAM_ROLE_NETWORK_HOST": "true",
+			"ECS_ENABLE_TASK_IAM_ROLE": "true",
 		},
 		PortBindings: map[nat.Port]map[string]string{
 			"51679/tcp": {

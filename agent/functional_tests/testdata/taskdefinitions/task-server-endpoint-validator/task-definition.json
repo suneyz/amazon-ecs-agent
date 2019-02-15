@@ -1,7 +1,6 @@
 {
     "family": "task-server-endpoint-validator",
     "taskRoleArn": "$$$TASK_ROLE$$$",
-    "networkMode": "host",
     "containerDefinitions": [{
         "image": "amazonlinux:2",
         "name": "task_server_endpoint_validator_container",
