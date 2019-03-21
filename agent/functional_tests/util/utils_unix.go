@@ -177,10 +177,7 @@ func (agent *TestAgent) StartAgent() error {
 			"51678/tcp": {{HostIP: "0.0.0.0"}},
 		},
 		Links: agent.Options.ContainerLinks,
-	}
-
-	if os.Getenv("ECS_FTEST_FORCE_NET_HOST") != "" {
-		hostConfig.NetworkMode = "host"
+		NetworkMode: "host",
 	}
 
 	if agent.Options != nil {
@@ -215,7 +212,6 @@ func (agent *TestAgent) StartAgent() error {
 			)
 			hostConfig.CapAdd = []string{"NET_ADMIN", "SYS_ADMIN"}
 			hostConfig.Init = &hostCofigInit
-			hostConfig.NetworkMode = "host"
 		}
 
 	}
