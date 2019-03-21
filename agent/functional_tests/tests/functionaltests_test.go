@@ -688,7 +688,6 @@ func testV3TaskEndpoint(t *testing.T, taskName, containerName, networkMode, awsl
 		},
 	}
 
-	os.Setenv("ECS_FTEST_FORCE_NET_HOST", "true")
 	agent := RunAgent(t, agentOptions)
 	defer agent.Cleanup()
 

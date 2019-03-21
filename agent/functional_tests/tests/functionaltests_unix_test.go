@@ -396,7 +396,6 @@ func TestTaskIAMRolesNetHostMode(t *testing.T) {
 			"ECS_ENABLE_TASK_IAM_ROLE":              "true",
 		},
 	}
-	os.Setenv("ECS_FTEST_FORCE_NET_HOST", "true")
 	agent := RunAgent(t, agentOptions)
 	defer agent.Cleanup()
 
@@ -687,7 +686,6 @@ func TestTaskMetadataValidator(t *testing.T) {
 	cwlClient.CreateLogGroup(&cloudwatchlogs.CreateLogGroupInput{
 		LogGroupName: aws.String(awslogsLogGroupName),
 	})
-	os.Setenv("ECS_FTEST_FORCE_NET_HOST", "true")
 	agent := RunAgent(t, &AgentOptions{
 		EnableTaskENI: true,
 		ExtraEnvironment: map[string]string{
@@ -739,10 +737,6 @@ func TestExecutionRole(t *testing.T) {
 			"ECS_ENABLE_AWSLOGS_EXECUTIONROLE_OVERRIDE": "true",
 		},
 	}
-
-	// Run the agent container with host network mode
-	os.Setenv("ECS_FTEST_FORCE_NET_HOST", "true")
-	defer os.Unsetenv("ECS_FTEST_FORCE_NET_HOST")
 
 	agent := RunAgent(t, &agentOptions)
 	defer agent.Cleanup()
@@ -1433,7 +1427,6 @@ func TestServerEndpointValidator(t *testing.T) {
 		},
 	}
 
-	os.Setenv("ECS_FTEST_FORCE_NET_HOST", "true")
 	agent := RunAgent(t, agentOptions)
 	defer agent.Cleanup()
 
