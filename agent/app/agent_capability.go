@@ -157,10 +157,10 @@ func (agent *ecsAgent) capabilities() ([]*ecs.Attribute, error) {
 	capabilities = appendNameOnlyAttribute(capabilities, attributePrefix+capabilitySecretLogDriverASM)
 
 	// ecs agent version 1.26.0 supports aws-appmesh cni plugin
-	capabilities = appendNameOnlyAttribute(capabilities, attributePrefix+appMeshAttributeSuffix)
+	capabilities = agent.appendAppmeshCapabilities(capabilities)
 
 	// support elastic inference in agent
-	capabilities = appendNameOnlyAttribute(capabilities, attributePrefix+taskEIAAttributeSuffix)
+	capabilities = agent.appendTaskEIACapabilities(capabilities)
 
 	// support container ordering in agent
 	capabilities = appendNameOnlyAttribute(capabilities, attributePrefix+capabilityContainerOrdering)

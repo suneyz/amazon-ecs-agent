@@ -32,3 +32,11 @@ func (agent *ecsAgent) appendNvidiaDriverVersionAttribute(capabilities []*ecs.At
 func (agent *ecsAgent) appendENITrunkingCapabilities(capabilities []*ecs.Attribute) []*ecs.Attribute {
 	return capabilities
 }
+
+func (agent *ecsAgent) appendAppmeshCapabilities(capabilities []*ecs.Attribute) []*ecs.Attribute {
+	return capabilities
+}
+
+func (agent *ecsAgent) appendTaskEIACapabilities(capabilities []*ecs.Attribute) []*ecs.Attribute {
+	return capabilities
+}

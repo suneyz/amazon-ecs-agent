@@ -88,6 +88,16 @@ func (agent *ecsAgent) appendENITrunkingCapabilities(capabilities []*ecs.Attribu
 	return agent.appendBranchENIPluginVersionAttribute(capabilities)
 }
 
+func (agent *ecsAgent) appendAppmeshCapabilities(capabilities []*ecs.Attribute) []*ecs.Attribute {
+	capabilities = appendNameOnlyAttribute(capabilities, attributePrefix+appMeshAttributeSuffix)
+	return capabilities
+}
+
+func (agent *ecsAgent) appendTaskEIACapabilities(capabilities []*ecs.Attribute) []*ecs.Attribute {
+	capabilities = appendNameOnlyAttribute(capabilities, attributePrefix+taskEIAAttributeSuffix)
+	return capabilities
+}
+
 func (agent *ecsAgent) appendBranchENIPluginVersionAttribute(capabilities []*ecs.Attribute) []*ecs.Attribute {
 	version, err := agent.cniClient.Version(ecscni.ECSBranchENIPluginName)
 	if err != nil {
